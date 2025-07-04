@@ -1,0 +1,9 @@
+development:
+  clients:
+    default:
+      uri: <%= ENV["MONGODB_URI"] %>
+
+test:
+  clients:
+    default:
+      uri: <%= ENV["MONGODB_URI"] %>
