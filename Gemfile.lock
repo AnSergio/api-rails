@@ -160,10 +160,6 @@ GEM
     mongo (2.21.1)
       base64
       bson (>= 4.14.1, < 6.0.0)
-    mongoid (9.0.6)
-      activemodel (>= 5.1, < 8.1, != 7.0.0)
-      concurrent-ruby (>= 1.0.5, < 2.0)
-      mongo (>= 2.18.0, < 3.0.0)
     msgpack (1.8.0)
     net-imap (0.5.9)
       date
@@ -218,6 +214,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.16)
+    rack-attack (6.7.0)
+      rack (>= 1.0, < 4)
     rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -363,9 +361,10 @@ DEPENDENCIES
   jbuilder
   jwt
   kamal
-  mongoid (~> 9.0)
+  mongo
   propshaft
   puma (>= 5.0)
+  rack-attack
   rails (~> 8.0.2)
   rubocop-rails-omakase
   selenium-webdriver

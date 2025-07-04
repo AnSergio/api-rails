@@ -18,11 +18,11 @@ gem "jbuilder"
 # gem "redis", ">= 4.0.1"
 
 # Ansergio
-gem 'mongoid', '~> 9.0'
-
-gem 'dotenv-rails'
-gem 'jwt'
-
+# gem 'mongoid', '~> 9.0'
+gem "mongo"
+gem "dotenv-rails"
+gem "jwt"
+gem "rack-attack"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
