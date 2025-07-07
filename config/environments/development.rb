@@ -69,7 +69,7 @@ Rails.application.configure do
   # config.generators.apply_rubocop_autocorrect_after_generate!
 
   # 1) URL onde o ActionCable vai escutar
-  config.action_cable.url = "ws://192.168.0.254:4000/cable"
+  # config.action_cable.url = "ws://192.168.0.254:3300/cable"
 
   # 2) Permite seu front local no Vite (ou todas as origens em dev)
   # config.action_cable.allowed_request_origins = [

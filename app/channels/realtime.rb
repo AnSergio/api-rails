@@ -1,4 +1,4 @@
-# app/channels/real_time.rb
+# app/channels/realtime.rb
 class Realtime < ApplicationCable::Channel
   def subscribed
     # Apenas aceita conexões válidas e ativas
