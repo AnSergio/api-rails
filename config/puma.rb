@@ -33,7 +33,7 @@ threads threads_count, threads_count
 # Definir host e porta via .env ou fallback
 host = ENV["SERV_HOST"] || "0.0.0.0"
 port = ENV["SERV_PORT"] || "3300"
-puts "tcp://#{host}:#{port}"
+puts "🌐 tcp://#{host}:#{port}"
 
 bind "tcp://#{host}:#{port}"
 

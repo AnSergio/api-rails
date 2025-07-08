@@ -6,6 +6,7 @@ require "json"
 # Inicializa ao subir o Rails
 Rails.application.config.after_initialize do
   mongo_client = Mongo::Client.new(ENV["MONGODB_URI"])
+  puts "📡 RaeltimeMdb"
   ChangeStreamListener.new(mongo_client).start
 end
 
@@ -25,7 +26,7 @@ class ChangeStreamListener
       databases.each do |db_info|
         db_name = db_info["name"]
         next if EXCLUDED_DBS.include?(db_name)
-        puts "db_name: #{db_name}"
+        # puts "db_name: #{db_name}"
 
         db = @client.use(db_name).database
         db.collections.each do |collection|

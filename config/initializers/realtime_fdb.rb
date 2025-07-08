@@ -1,10 +1,11 @@
-# config/initializers/post_event_listener.rb
+# config/initializers/realtime_fdb.rb
 require "open3"
 
 Rails.application.config.after_initialize do
   Thread.new do
     python = RUBY_PLATFORM.include?("linux") ? "python3" : "python"
     command = "#{python} ../postevent.py"
+    puts "📡 RaeltimeFdb"
 
     Open3.popen3(command) do |_stdin, stdout, stderr, wait_thr|
       Thread.new do
