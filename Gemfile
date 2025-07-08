@@ -9,9 +9,6 @@ gem "puma", ">= 5.0"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
-# 🌐 Mqtt
-gem "mqtt"
-
 # 📦 MongoDB Driver oficial
 gem "mongo"
 
@@ -25,7 +22,7 @@ gem "rack-attack"
 gem "dotenv-rails"
 
 # 📡 WebSocket (usado para monitorar mudanças com Faye)
-gem "faye-websocket"
+# gem "faye-websocket"
 
 # 📝 Serialização JSON (caso queira usar `Jbuilder` para APIs)
 gem "jbuilder"
