@@ -3,13 +3,6 @@ require "thread"
 require "mongo"
 require "json"
 
-# Rails.application.config.after_initialize do
-# Mongo::Logger.logger.level = ::Logger::INFO
-# mongo_client = Mongo::Client.new(ENV["MONGODB_URI"], max_pool_size: 100)
-# puts "📡 RaeltimeMongoDB}"
-# ChangeStreamListener.new(mongo_client).start
-# end
-
 class RealtimeMdbRunner
   EXCLUDED_DBS = %w[admin config local]
   CLIENT  = Mongo::Client.new(ENV["MONGODB_URI"], max_pool_size: 100)
