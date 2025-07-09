@@ -3,10 +3,10 @@ require "thread"
 require "mongo"
 require "json"
 
-# Inicializa ao subir o Rails
 Rails.application.config.after_initialize do
-  mongo_client = Mongo::Client.new(ENV["MONGODB_URI"])
-  puts "📡 RaeltimeMdb"
+  Mongo::Logger.logger.level = ::Logger::INFO
+  mongo_client = Mongo::Client.new(ENV["MONGODB_URI"], max_pool_size: 100)
+  puts "📡 RaeltimeMongoDB}"
   ChangeStreamListener.new(mongo_client).start
 end
 
@@ -20,20 +20,21 @@ class ChangeStreamListener
   def start
     admin = @client.database.client.use("admin").database
     databases = admin.command(listDatabases: 1).first["databases"]
-    # puts "databases: #{databases}"
 
-    Thread.new do
-      databases.each do |db_info|
-        db_name = db_info["name"]
-        next if EXCLUDED_DBS.include?(db_name)
-        # puts "db_name: #{db_name}"
+    databases.each do |db_info|
+      db_name = db_info["name"]
+      next if EXCLUDED_DBS.include?(db_name)
 
-        db = @client.use(db_name).database
-        db.collections.each do |collection|
+      db = @client.use(db_name).database
+      db.collections.each do |collection|
+        Thread.new do
           begin
             change_stream = collection.watch
             change_stream.each do |change|
-              realtime = "#{db_name}/#{collection.name}"
+              ns = change["ns"]
+              next unless ns
+
+              realtime = "#{ns["db"]}/#{ns["coll"]}"
               puts "📡 MongoDB: #{realtime}"
               ActionCable.server.broadcast("realtime", realtime)
             end
@@ -45,6 +46,7 @@ class ChangeStreamListener
     end
   end
 end
+
 
 
 
