@@ -103,10 +103,6 @@ GEM
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
-    eventmachine (1.2.7)
-    faye-websocket (0.12.0)
-      eventmachine (>= 0.12.0)
-      websocket-driver (>= 0.8.0)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -153,7 +149,6 @@ GEM
     mongo (2.21.1)
       base64
       bson (>= 4.14.1, < 6.0.0)
-    mqtt (0.6.0)
     msgpack (1.8.0)
     net-imap (0.5.9)
       date
@@ -363,12 +358,10 @@ DEPENDENCIES
   brakeman
   debug
   dotenv-rails
-  faye-websocket
   jbuilder
   jwt
   kamal
   mongo
-  mqtt
   puma (>= 5.0)
   rack-attack
   rails (~> 8.0.2)
